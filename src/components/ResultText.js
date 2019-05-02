@@ -10,7 +10,7 @@ const ResultText = (props) => {
       <TextArea
         value={props.value}
         rows={22}
-        cols={46}
+        cols={45}
         placeholder="Результативный текст"
       />
     </div>

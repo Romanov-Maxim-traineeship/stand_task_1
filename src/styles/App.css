@@ -61,6 +61,18 @@
   height: 100%;
 }
 
+@media (max-width: 400px) {
+  .Buttons-wrapper {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bitton-wrap {
+    margin-bottom: 25px;
+  }
+ }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
