@@ -1,0 +1,104 @@
+.App {
+  /* text-align: center; */
+  background-color: #282c34;
+}
+
+.about {
+  background-color: #fff;
+  color: #282c34;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  display: inline-block;
+  font-weight: bold;
+  margin: 20px;
+  font-size: 18px;
+}
+
+.App-logo {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  animation: App-logo-spin infinite 20s linear;
+  height: 10vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  /* background-image: linear-gradient(to left bottom, #bebfc2, #95979c, #6f7177, #4a4d54, #282c34); */
+  min-height: 100vh;
+  /* display: flex;
+  flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.TextProccessing-wrapper {
+  /* background-image: linear-gradient(to left bottom, #bebfc2, #95979c, #6f7177, #4a4d54, #282c34); */
+  /* padding: 50px; */
+  text-align: center;
+}
+
+.Buttons-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bitton-wrap {
+  /* width: 100;
+  height: 100;
+  padding: 20; */
+  padding: 0 40px;
+}
+
+.Text-area {
+  display: inline-block;
+  padding: 20px;
+  color: black;
+}
+
+.Text-area_about {
+  color: white;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+@media (max-width: 400px) {
+  .Buttons-wrapper {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bitton-wrap {
+    margin-bottom: 25px;
+  }
+
+  .App-logo {
+    left: 0;
+    position: relative;
+    animation: App-logo-spin infinite 20s linear;
+    height: 90vmin;
+    pointer-events: none;
+  }
+ }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
