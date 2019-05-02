@@ -21,7 +21,6 @@ class TextProcessing extends Component {
   }
 
   word(word) {
-    console.log(`word: ${word}`, word.length);
     return `{${word}}`;
   }
 
@@ -76,8 +75,8 @@ class TextProcessing extends Component {
           <TextArea
             value={this.state.value}
             onChange={this.handleChange}
-            rows={25}
-            cols={60}
+            rows={22}
+            cols={50}
             placeholder="Исходный текст"
           />
         </div>

@@ -9,8 +9,8 @@ const ResultText = (props) => {
       <span className="Text-area_about">OUT</span>
       <TextArea
         value={props.value}
-        rows={25}
-        cols={55}
+        rows={22}
+        cols={46}
         placeholder="Результативный текст"
       />
     </div>
