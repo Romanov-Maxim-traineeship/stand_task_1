@@ -76,6 +76,9 @@ class TextProcessing extends Component {
         <div className="Text-area">
           <span className="Text-area_about">IN</span>
           <TextArea
+            style={{
+              resize: 'none',
+            }}
             value={this.state.value}
             onChange={this.handleChange}
             rows={22}
@@ -90,6 +93,9 @@ class TextProcessing extends Component {
         <div className="Buttons-wrapper">
           <div className="special-char">
             <TextArea
+              style={{
+                resize: 'none',
+              }}
               value={this.state.specialChar}
               onChange={this.handleChangeSpecialEven}
               rows={1}

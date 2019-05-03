@@ -8,6 +8,9 @@ const ResultText = (props) => {
     <div className="Text-area">
       <span className="Text-area_about">OUT</span>
       <TextArea
+        style={{
+          resize: 'none',
+        }}
         value={props.value}
         rows={22}
         cols={45}
