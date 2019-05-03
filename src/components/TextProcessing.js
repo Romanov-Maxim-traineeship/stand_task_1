@@ -11,38 +11,40 @@ const { TextArea } = Input;
 class TextProcessing extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '', resultValue: '' };
+    this.state = { value: '', resultValue: '', specialChar: '', counter: 0 };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeSpecialEven = this.handleChangeSpecialEven.bind(this);
   }
 
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
 
-  word(word) {
-    return `{${word}}`;
+  handleChangeSpecialEven(event) {
+    this.setState({ specialChar: event.target.value });
   }
 
   handleRun() {
-    const { value } = this.state;
-    let res = value
-      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .split(' ');
-    // let newRes = res.map((word) => {
-    //   console.log('!!!');
-    //   return `{${word}}`;
-    // });
+    const { value, specialChar } = this.state;
+    let res = value.split(' ');
 
-    let newRes = map(res, this.word);
-    this.setState({ resultValue: newRes.join(' ') });
+    var popo = 0;
+    res.map((res) => {
+      if (res[0] === specialChar) {
+        popo++;
+      }
+    });
+
+    console.log('popop', popo);
+    this.setState({ counter: popo });
+    // this.setState({ resultValue: newRes.join(' ') });
   }
 
   handleClear() {
     this.setState({ value: '' });
     this.setState({ resultValue: '' });
+    this.setState({ specialChar: '' });
   }
 
   handleOpen() {}
@@ -68,6 +70,7 @@ class TextProcessing extends Component {
   };
 
   render() {
+    const { counter, specialChar } = this.state;
     return (
       <div className="TextProccessing-wrapper">
         <div className="Text-area">
@@ -81,10 +84,19 @@ class TextProcessing extends Component {
           />
         </div>
         <ResultText
-          value={this.state.resultValue}
+          value={specialChar ? `Слов на букву '${specialChar}': ${counter}` : 0}
           onChange={this.handleChange}
         />
         <div className="Buttons-wrapper">
+          <div className="special-char">
+            <TextArea
+              value={this.state.specialChar}
+              onChange={this.handleChangeSpecialEven}
+              rows={1}
+              cols={3}
+              placeholder="Исходный текст"
+            />
+          </div>
           <ReactFileReader fileTypes={['.txt']} handleFiles={this.handleFiles}>
             <Button
               className="bitton-wrap"
