@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/penis.svg';
+import logo from '../images/logo.png';
 import '../styles/App.css';
 
 import TextProcessing from './TextProcessing';
