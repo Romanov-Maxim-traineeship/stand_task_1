@@ -71,6 +71,14 @@
   .bitton-wrap {
     margin-bottom: 25px;
   }
+
+  .App-logo {
+    left: 0;
+    position: relative;
+    animation: App-logo-spin infinite 20s linear;
+    height: 90vmin;
+    pointer-events: none;
+  }
  }
 
 @keyframes App-logo-spin {
