@@ -27,17 +27,16 @@ class TextProcessing extends Component {
   handleRun() {
     const { value } = this.state;
     let res = value
-      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .split(' ');
-    // let newRes = res.map((word) => {
-    //   console.log('!!!');
-    //   return `{${word}}`;
-    // });
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '') //уюираю все лишнее из
+      //текста(запятые, скобочки и т.д...)
+      .replace(/\s+/g, ' ') //заменяю большие пробелы или абзацы на 1 пробел
+      .trim() //убираю пробелы в начале и конце строки
+      .split(' '); //делаю из набора слов массив слов для дальнейшей работы
 
-    let newRes = map(res, this.word);
-    this.setState({ resultValue: newRes.join(' ') });
+    let newRes = map(res, this.word); // бегу по каждому слову в массиве и
+    //оборачиваю в ковычки c помощью функции
+    this.setState({ resultValue: newRes.join(' ') }); //преобразую массив слов в текст
+    //и кладу в state результативного текста
   }
 
   handleClear() {
