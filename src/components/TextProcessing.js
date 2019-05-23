@@ -27,18 +27,15 @@ class TextProcessing extends Component {
 
   handleRun() {
     const { value, specialChar } = this.state;
-    let res = value.split(' ');
+    let res = value.split(' '); //Преобразуем исходный текст в массив
 
-    var popo = 0;
     res.map((res) => {
+      // бежимся по масиву
       if (res[0] === specialChar) {
-        popo++;
+        // сравниваем первую букву слова с введеным символом
+        this.setState({ counter: this.state.counter + 1 }); // если совпало делаем инкремент
       }
     });
-
-    console.log('popop', popo);
-    this.setState({ counter: popo });
-    // this.setState({ resultValue: newRes.join(' ') });
   }
 
   handleClear() {
@@ -100,7 +97,7 @@ class TextProcessing extends Component {
               onChange={this.handleChangeSpecialEven}
               rows={1}
               cols={3}
-              placeholder="Исходный текст"
+              placeholder="Искомая буква"
             />
           </div>
           <ReactFileReader fileTypes={['.txt']} handleFiles={this.handleFiles}>
