@@ -20,8 +20,11 @@ class TextProcessing extends Component {
     this.setState({ value: event.target.value });
   }
 
-  word(word) {
-    return `{${word}}`;
+  word(line) {
+    var tmp = line[0];
+    var str = line.replace(new RegExp('^' + line[0]), line[line.length - 1]);
+    var str2 = str.replace(new RegExp(str[str.length - 1] + '$'), tmp);
+    return str2;
   }
 
   handleRun() {
@@ -34,7 +37,7 @@ class TextProcessing extends Component {
       .split(' '); //делаю из набора слов массив слов для дальнейшей работы
 
     let newRes = map(res, this.word); // бегу по каждому слову в массиве и
-    //оборачиваю в ковычки c помощью функции
+    // меняю последнию букву с послденей
     this.setState({ resultValue: newRes.join(' ') }); //преобразую массив слов в текст
     //и кладу в state результативного текста
   }
