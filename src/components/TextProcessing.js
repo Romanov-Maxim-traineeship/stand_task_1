@@ -15,6 +15,7 @@ class TextProcessing extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeSpecialEven = this.handleChangeSpecialEven.bind(this);
+    this.handleRun = this.handleRun.bind(this);
   }
 
   handleChange(event) {
@@ -27,13 +28,16 @@ class TextProcessing extends Component {
 
   handleRun() {
     const { value, specialChar } = this.state;
-    let res = value.split(' '); // преобразуем исходный текст в массив
+    let res = value.toLowerCase().split(' '); // преобразуем исходный текст в массив
 
+    this.setState({ counter: 0 });
     res.map((res) => {
       // итерируемся по масиву
       if (res[0] === specialChar) {
         // сравниваем первую букву слова с введеным искомым символом
-        this.setState({ counter: this.state.counter + 1 }); // делаем инкремент в случае совпадения
+        this.setState(function(prevState, props) {
+          return { counter: prevState.counter + 1 };
+        });
       }
     });
   }
