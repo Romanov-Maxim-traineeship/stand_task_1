@@ -27,13 +27,13 @@ class TextProcessing extends Component {
 
   handleRun() {
     const { value, specialChar } = this.state;
-    let res = value.split(' '); //Преобразуем исходный текст в массив
+    let res = value.split(' '); // преобразуем исходный текст в массив
 
     res.map((res) => {
-      // бежимся по масиву
+      // итерируемся по масиву
       if (res[0] === specialChar) {
-        // сравниваем первую букву слова с введеным символом
-        this.setState({ counter: this.state.counter + 1 }); // если совпало делаем инкремент
+        // сравниваем первую букву слова с введеным искомым символом
+        this.setState({ counter: this.state.counter + 1 }); // делаем инкремент в случае совпадения
       }
     });
   }
