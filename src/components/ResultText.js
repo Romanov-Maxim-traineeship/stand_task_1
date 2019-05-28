@@ -14,7 +14,7 @@ const ResultText = (props) => {
         value={props.value}
         rows={22}
         cols={45}
-        placeholder="Результативный текст"
+        placeholder="Результат"
       />
     </div>
   );

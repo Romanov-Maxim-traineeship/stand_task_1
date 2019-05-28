@@ -11,7 +11,13 @@ const { TextArea } = Input;
 class TextProcessing extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '', resultValue: '', specialChar: '', counter: 0 };
+    this.state = {
+      value: '',
+      resultValue: '',
+      specialChar: '',
+      counter: 0,
+      resultWords: [],
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeSpecialEven = this.handleChangeSpecialEven.bind(this);
@@ -27,18 +33,28 @@ class TextProcessing extends Component {
   }
 
   handleRun() {
-    const { value, specialChar } = this.state;
+    const { value } = this.state;
     let res = value.toLowerCase().split(' '); // преобразуем исходный текст в массив
 
-    this.setState({ counter: 0 });
+    this.setState({ counter: 0, resultWords: [] });
     res.map((res) => {
       // итерируемся по масиву
-      if (res[0] === specialChar) {
+      console.log(res[res.length - 1]);
+      if (res[0] === res[res.length - 1] && res.length >= 2) {
         // сравниваем первую букву слова с введеным искомым символом
         this.setState(function(prevState, props) {
-          return { counter: prevState.counter + 1 };
+          return {
+            resultWords: [...prevState.resultWords, res],
+            counter: prevState.counter + 1,
+          };
         });
       }
+    });
+
+    this.setState(function(prevState, props) {
+      return {
+        resultValue: prevState.resultWords.join(' '),
+      };
     });
   }
 
@@ -71,7 +87,8 @@ class TextProcessing extends Component {
   };
 
   render() {
-    const { counter, specialChar } = this.state;
+    const { counter, resultWords, resultValue } = this.state;
+
     return (
       <div className="TextProccessing-wrapper">
         <div className="Text-area">
@@ -88,22 +105,10 @@ class TextProcessing extends Component {
           />
         </div>
         <ResultText
-          value={specialChar ? `Слов на букву '${specialChar}': ${counter}` : 0}
+          value={`Слов: ${counter}\n${resultValue}`}
           onChange={this.handleChange}
         />
         <div className="Buttons-wrapper">
-          <div className="special-char">
-            <TextArea
-              style={{
-                resize: 'none',
-              }}
-              value={this.state.specialChar}
-              onChange={this.handleChangeSpecialEven}
-              rows={1}
-              cols={3}
-              placeholder="Искомая буква"
-            />
-          </div>
           <ReactFileReader fileTypes={['.txt']} handleFiles={this.handleFiles}>
             <Button
               className="bitton-wrap"
