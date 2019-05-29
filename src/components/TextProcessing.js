@@ -41,11 +41,11 @@ class TextProcessing extends Component {
       // итерируемся по масиву
       console.log(res[res.length - 1]);
       if (res[0] === res[res.length - 1] && res.length >= 2) {
-        // сравниваем первую букву слова с введеным искомым символом
+        // сравниваем первую букву слова с последнeй
         this.setState(function(prevState, props) {
           return {
-            resultWords: [...prevState.resultWords, res],
-            counter: prevState.counter + 1,
+            resultWords: [...prevState.resultWords, res], // записываем слова, у которых совпали первые и последний буквы
+            counter: prevState.counter + 1, // инкремент счетчика
           };
         });
       }
