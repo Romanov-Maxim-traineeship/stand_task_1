@@ -34,17 +34,18 @@ class TextProcessing extends Component {
 
   handleRun() {
     const { value } = this.state;
-    let res = value.toLowerCase().split(' '); // преобразуем исходный текст в массив
+    let res = value.split(' '); // преобразуем исходный текст в массив
 
     this.setState({ counter: 0, resultWords: [] });
-    res.map((res) => {
+    res.map((res, i) => {
+      console.log('!!!!', i, i % 2);
       // итерируемся по масиву
       console.log(res[res.length - 1]);
-      if (res[0] === res[res.length - 1] && res.length >= 2) {
-        // сравниваем первую букву слова с последнeй
+      if (!(i % 2)) {
+        // находим нечетные слова
         this.setState(function(prevState, props) {
           return {
-            resultWords: [...prevState.resultWords, res], // записываем слова, у которых совпали первые и последний буквы
+            resultWords: [...prevState.resultWords, res], // записываем нечетные слова
             counter: prevState.counter + 1, // инкремент счетчика
           };
         });
